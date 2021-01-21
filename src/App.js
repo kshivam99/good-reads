@@ -3,12 +3,26 @@ import "./styles.css";
 import { useState } from "react";
 
 const bookDB = {
+  SciFic: [
+    { name: "The Hitchhiker's Guide to the Galaxy", rating: "4.2/5" },
+    { name: "The Hobbit, or There and Back Again", rating: "4.2/5" },
+    { name: "	Harry Potter and the Sorcerer's Stone", rating: "4.4/5" },
+    { name: "2001: A Space Odyssey", rating: "4.1/5" },
+    { name: "The Shadow Keepers", rating: "4.3/5" }
+  ],
+  Horror_and_Disturbing: [
+    { name: "American Psycho", rating: "3.8/5" },
+    { name: "1984", rating: "4.1/5" },
+    { name: "Lord of the Flies", rating: "3.7/5" },
+    { name: "Holy Bible: King James Version", rating: "4.4/5" },
+    { name: "IT", rating: "4.2/5" }
+  ],
   Javascript: [
     { name: "Eloquent JavaScript", rating: "4/5" },
     { name: "You Don't Know JS", rating: "3.5/5" }
   ],
 
-  fiction: [
+  Fiction: [
     {
       name: "Shiva Trilogy",
       rating: "5/5"
@@ -53,10 +67,11 @@ const bookDB = {
 };
 
 export default function App() {
-  const [selectedGenre, setGenre] = useState("Business");
+  const [selectedGenre, setGenre] = useState("SciFic");
   function genreClickHandler(genre) {
     setGenre(genre);
   }
+
   return (
     <div className="App">
       <h1> 📚 Good Reads </h1>
@@ -84,7 +99,7 @@ export default function App() {
       </div>
       <hr />
       <div style={{ textAlign: "left" }}>
-        <ul style={{ paddingInlineStart: "0" }}>
+        <ul>
           {bookDB[selectedGenre].map((book) => (
             <li
               key={book.name}
